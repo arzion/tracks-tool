@@ -9,9 +9,16 @@ function TracksSearch(input, button, results) {
     _this.searchButton = button;
     _this.resultContainer = results;
 
-    _this.init = function() {
+    _this.init = function () {
         let searchTracksThrottle = helpers.throttleCall(api.searchTracks, 2000, false);
-        let doSearch = function() {
+        let doSearch = function () {
+
+            // dynamically load module
+            //            require.ensure([], function () {
+            //                let dynamicModule = require('./dynamicModule');
+            //                dynamicModule.do();
+            //            });
+
             searchTracksThrottle(_this.searchInput.value, (result) => {
                 _this.resultContainer.innerHTML +=
                     `<div>Time in ms: ${Date.now()}. Result is "${result}". Text: ${_this.searchInput.value}.</div>`;

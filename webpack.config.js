@@ -1,17 +1,19 @@
 'use strict';
 
-const NODE_ENV = process.env.NODE_ENV || 'development'; // global varibale to determine the build type
+var path = require('path');
 const webpack = require('webpack'); // getting webpack as module (gives access to webpack object with plugins)
 
+const NODE_ENV = process.env.NODE_ENV || 'development'; // global varibale to determine the build type
+
 module.exports = {
-    context: __dirname + '/frontend', // main path of sources
+    context: path.join(__dirname, '/frontend'), // main path of sources
 
     entry: {
         app: "./app" // app.js - the entry point of application
     },
 
     output: {
-        path: __dirname + '/public/dist', // the path where files will be compiled
+        path: path.join(__dirname, '/public/dist'), // the path where files will be compiled
         publicPath: '/dist/', // just we need to specify the public path to allow dynamic requiers work
         filename: "[name].js", // compilation file name pattern (name -> name of entry point)
         library: "[name]" // compiled file will return the global variable called [name] -> entry point name
@@ -36,7 +38,7 @@ module.exports = {
         new webpack.OldWatchingPlugin() // if watch works bad - just add this plugin
     ],
 
-    resolve: {  // how and where to find modules
+    resolve: { // how and where to find modules
         modulesDirectories: ['node_modules'],
         extensions: ['', '.js']
     },
@@ -48,7 +50,7 @@ module.exports = {
     },
 
     module: {
-        loaders: [{ // loaders that are injected into the compilation pipeline
+        loaders: [{
             test: /\.js$/,
             loader: 'babel', // loader that compiles ECMA-6(7) to ECMA-5 js
             exclude: /(node_modules|bower_components)/,
@@ -56,6 +58,12 @@ module.exports = {
                 presets: ['es2015'],
                 plugins: ['transform-runtime'] // all helper fucntions should be placed into the common module
             }
+        }, {
+            test: /\.css/,
+            loader: 'style!css'
+        }, {
+            test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
+            loader: 'file?name=[path][name].[ext]'
         }]
     }
 };

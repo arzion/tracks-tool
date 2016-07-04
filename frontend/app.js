@@ -1,5 +1,7 @@
 'use strict'
 
+import './style/app.css';
+
 import settings from './app.settings';
 import bmatApi from './api/bmatApi';
 import catalogApi from './api/catalogApi';
