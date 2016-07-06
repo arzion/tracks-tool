@@ -18,7 +18,35 @@ let api = {
         ajax.get(actions.searchTracks, (result) => {
             console.log(`CATALOG API: Search initiated by: ${actions.searchTracks}. Query: ${query}. Result: ${result}`);
             if (typeof callback == 'function') {
-                callback(result);
+                callback([{
+                    isrc: 100,
+                    lmid: 200,
+                    trackName: 'Hello',
+                    artistName: 'Adele',
+                    albumName: 'The best',
+                    duration: 250,
+                }, {
+                    isrc: 101,
+                    lmid: 201,
+                    trackName: 'Hit me baby one more time',
+                    artistName: 'Britney Spears',
+                    albumName: 'Toxic',
+                    duration: 212,
+                }, {
+                    isrc: 102,
+                    lmid: 202,
+                    trackName: 'Crip',
+                    artistName: 'Radiohead',
+                    albumName: 'Crip',
+                    duration: 341,
+                }, {
+                    isrc: 103,
+                    lmid: 203,
+                    trackName: 'Love is live',
+                    artistName: 'Madonna',
+                    albumName: 'TThis summer',
+                    duration: 283
+                }]);
             }
         });
     }

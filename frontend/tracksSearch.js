@@ -13,15 +13,11 @@ function TracksSearch(input, button, results) {
         let searchTracksThrottle = helpers.throttleCall(api.searchTracks, 2000, false);
         let doSearch = function () {
 
-            // dynamically load module
-            //            require.ensure([], function () {
-            //                let dynamicModule = require('./dynamicModule');
-            //                dynamicModule.do();
-            //            });
-
             searchTracksThrottle(_this.searchInput.value, (result) => {
-                _this.resultContainer.innerHTML +=
-                    `<div>Time in ms: ${Date.now()}. Result is "${result}". Text: ${_this.searchInput.value}.</div>`;
+                require.ensure(['./tracksTable'], function () {
+                    let TracksTable = require('./tracksTable');
+                    new TracksTable(_this.resultContainer).render(result);
+                });
             });
         }
         _this.searchInput.addEventListener('keydown', (e) => {

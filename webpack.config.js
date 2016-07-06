@@ -1,9 +1,11 @@
 'use strict';
 
-var path = require('path');
 const webpack = require('webpack'); // getting webpack as module (gives access to webpack object with plugins)
 
 const NODE_ENV = process.env.NODE_ENV || 'development'; // global varibale to determine the build type
+let path = require('path');
+
+let ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     context: path.join(__dirname, '/frontend'), // main path of sources
@@ -35,7 +37,10 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({ // all common code from entry points will be placed to the common.js file
             name: 'common'
         }),
-        new webpack.OldWatchingPlugin() // if watch works bad - just add this plugin
+        new webpack.OldWatchingPlugin(), // if watch works bad - just add this plugin
+        new ExtractTextPlugin('[name].css', {
+            allChuncks: true // load css even from dynamic requires
+        })
     ],
 
     resolve: { // how and where to find modules
@@ -56,11 +61,11 @@ module.exports = {
             exclude: /(node_modules|bower_components)/,
             query: {
                 presets: ['es2015'],
-                plugins: ['transform-runtime'] // all helper fucntions should be placed into the common module
+                plugins: ['add-module-exports', 'transform-runtime'] // all helper fucntions should be placed into the common module
             }
         }, {
-            test: /\.css/,
-            loader: 'style!css'
+            test: /\.less$/,
+            loader: ExtractTextPlugin.extract('css!less')
         }, {
             test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
             loader: 'file?name=[path][name].[ext]'
