@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 import ajax from '../utils/ajax';
 
@@ -8,10 +8,11 @@ let actions = {
 
 let api = {
     init: (rootUrl) => {
-        ajax.get(rootUrl, (result) => {
-            actions.getSimilar = 'http://get-similar.bmatApi'
+        ajax.get(rootUrl,
+        (result) => {
+            actions.getSimilar = 'http://get-similar.bmatApi';
             console.log(`BMAT API: Initialised. GET from ${rootUrl}. Result: ${result}`);
-        })
+        });
     },
 
     searchTrack: (query, callback) => {

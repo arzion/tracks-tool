@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var helpers = {
     throttleCall: function(func, ms, lastExecute) {

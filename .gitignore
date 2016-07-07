@@ -39,3 +39,6 @@ jspm_packages
 # Distination folder
 dist
 public/dist
+
+# Exclude WS
+.idea

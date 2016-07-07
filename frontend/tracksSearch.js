@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 import helpers from './utils/helpers';
 import api from './api/catalogApi';
@@ -14,14 +14,14 @@ function TracksSearch(input, button, results) {
         let doSearch = function () {
 
             searchTracksThrottle(_this.searchInput.value, (result) => {
-                require.ensure(['./tracksTable'], function () {
-                    let TracksTable = require('./tracksTable');
+                require.ensure(['./components/tracksTable'], function () {
+                    let TracksTable = require('./components/tracksTable');
                     new TracksTable(_this.resultContainer).render(result);
                 });
             });
-        }
+        };
         _this.searchInput.addEventListener('keydown', (e) => {
-            if (e.keyCode != 13) {
+            if (e.keyCode !== 13) {
                 return;
             }
             doSearch();

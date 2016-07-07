@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 
 function TracksTable(container) {
-    var _this = this;
+    let _this = this;
     _this.container = container;
 
     _this.render = function (data) {

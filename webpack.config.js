@@ -11,22 +11,22 @@ module.exports = {
     context: path.join(__dirname, '/frontend'), // main path of sources
 
     entry: {
-        app: "./app" // app.js - the entry point of application
+        app: './app' // app.js - the entry point of application
     },
 
     output: {
         path: path.join(__dirname, '/public/dist'), // the path where files will be compiled
-        publicPath: '/dist/', // just we need to specify the public path to allow dynamic requiers work
-        filename: "[name].js", // compilation file name pattern (name -> name of entry point)
-        library: "[name]" // compiled file will return the global variable called [name] -> entry point name
+        publicPath: 'dist/', // just we need to specify the public path to allow dynamic requiers work
+        filename: '[name].js', // compilation file name pattern (name -> name of entry point)
+        library: '[name]' // compiled file will return the global variable called [name] -> entry point name
     },
 
-    watch: NODE_ENV == 'development', // watch - true - allows listen editing the files and re-build on changes
+    //watch: NODE_ENV == 'development', // watch - true - allows listen editing the files and re-build on changes
     watchOptions: {
         aggregateTimeout: 100 // delay before re-building
     },
 
-    devtool: NODE_ENV == 'development' ? 'cheap-inline-module-source-map' : null, // adding source-map
+    devtool: NODE_ENV === 'development' ? 'cheap-inline-module-source-map' : null, // adding source-map
 
     plugins: [
         new webpack.NoErrorsPlugin(), // if errors during compilation - no results
@@ -73,7 +73,7 @@ module.exports = {
     }
 };
 
-if (NODE_ENV == 'production') {
+if (NODE_ENV === 'production') {
     module.exports.plugins.push(
         new webpack.optimize.UglifyJsPlugin({ // minimise the javascript files during compilation
             compress: {

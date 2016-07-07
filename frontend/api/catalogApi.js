@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 import ajax from '../utils/ajax';
 
@@ -8,10 +8,11 @@ let actions = {
 
 let api = {
     init: (rootUrl) => {
-        ajax.get(rootUrl, (result) => {
-            actions.searchTracks = 'http://search.catalogApi'
+        ajax.get(rootUrl,
+        (result) => {
+            actions.searchTracks = 'http://search.catalogApi';
             console.log(`CATALOG API: Initialised. GET from ${rootUrl}. Result: ${result}`);
-        })
+        });
     },
 
     searchTracks: (query, callback) => {
@@ -24,21 +25,21 @@ let api = {
                     trackName: 'Hello',
                     artistName: 'Adele',
                     albumName: 'The best',
-                    duration: 250,
+                    duration: 250
                 }, {
                     isrc: 101,
                     lmid: 201,
                     trackName: 'Hit me baby one more time',
                     artistName: 'Britney Spears',
                     albumName: 'Toxic',
-                    duration: 212,
+                    duration: 212
                 }, {
                     isrc: 102,
                     lmid: 202,
                     trackName: 'Crip',
                     artistName: 'Radiohead',
                     albumName: 'Crip',
-                    duration: 341,
+                    duration: 341
                 }, {
                     isrc: 103,
                     lmid: 203,
