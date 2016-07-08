@@ -25,7 +25,8 @@ let api = {
                     trackName: 'Hello',
                     artistName: 'Adele',
                     albumName: 'The best',
-                    duration: 250
+                    duration: 250,
+                    sample: 'https://cs7-2v4.vk-cdn.net/p24/d31c2fc11feb9d.mp3'
                 }, {
                     isrc: 101,
                     lmid: 201,

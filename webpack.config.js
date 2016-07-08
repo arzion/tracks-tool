@@ -8,14 +8,14 @@ let path = require('path');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    context: path.join(__dirname, '/frontend'), // main path of sources
+    context: path.join(__dirname, 'frontend'), // main path of sources
 
     entry: {
         app: './app' // app.js - the entry point of application
     },
 
     output: {
-        path: path.join(__dirname, '/public/dist'), // the path where files will be compiled
+        path: path.join(__dirname, 'public/dist'), // the path where files will be compiled
         publicPath: 'dist/', // just we need to specify the public path to allow dynamic requiers work
         filename: '[name].js', // compilation file name pattern (name -> name of entry point)
         library: '[name]' // compiled file will return the global variable called [name] -> entry point name
@@ -44,7 +44,8 @@ module.exports = {
     ],
 
     resolve: { // how and where to find modules
-        modulesDirectories: ['node_modules'],
+        modulesDirectories: ['node_modules', 'components'],
+        root:  path.join(__dirname, 'frontend'),
         extensions: ['', '.js']
     },
 
@@ -69,6 +70,9 @@ module.exports = {
         }, {
             test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
             loader: 'file?name=[path][name].[ext]'
+        }, {
+            test: /\.hbs$/,
+            loader: 'handlebars-template'
         }]
     }
 };

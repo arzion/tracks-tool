@@ -12,7 +12,10 @@
     },
     "author": "Vladimir Muzyka",
     "license": "MIT",
+    "dependencies": {
+    },
     "devDependencies": {
+        "webpack": "^1.12.13",
         "babel-loader": "^6.2.4",
         "babel-plugin-add-module-exports": "^0.2.1",
         "babel-plugin-transform-es2015-modules-commonjs": "^6.10.3",
@@ -26,6 +29,7 @@
         "less-loader": "^2.2.3",
         "postcss-loader": "^0.9.1",
         "style-loader": "^0.13.1",
-        "webpack": "^1.12.13"
+        "handlebars": "^4.0.5",
+        "handlebars-template-loader": "^0.6.0"
     }
 }

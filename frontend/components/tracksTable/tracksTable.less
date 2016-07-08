@@ -1,0 +1,36 @@
+.table-container {
+  .query {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  #tracks-table {
+    tr {
+      &:hover {
+        .similar-button {
+          visibility: visible;
+        }
+      }
+    }
+    td {
+      vertical-align: middle;
+    }
+    .track-id {
+      font-size: 12px;
+      .track-isrc, .track-lmid {
+        display: table-row;
+        .title, .value {
+          display: table-cell;
+        }
+      }
+    }
+    .track-name {
+      font-weight: bold;
+    }
+    audio {
+
+    }
+    .similar-button {
+      //visibility: hidden;
+    }
+  }
+}
