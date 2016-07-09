@@ -3,21 +3,22 @@
 import ajax from '../utils/ajax';
 
 let actions = {
-    searchTracks: null
-}
+    search: null
+};
 
 let api = {
     init: (rootUrl) => {
         ajax.get(rootUrl,
         (result) => {
-            actions.searchTracks = 'http://search.catalogApi';
+            actions.search = 'http://search.catalogApi';
             console.log(`CATALOG API: Initialised. GET from ${rootUrl}. Result: ${result}`);
         });
     },
 
-    searchTracks: (query, callback) => {
+    search: (data, callback) => {
         ajax.get(actions.searchTracks, (result) => {
-            console.log(`CATALOG API: Search initiated by: ${actions.searchTracks}. Query: ${query}. Result: ${result}`);
+            console.log(`CATALOG API: Search initiated by: ${actions.search}.
+                Query: ${data.query}. Type: ${data.type}. Portal: ${data.portal} Result: ${result}`);
             if (typeof callback == 'function') {
                 callback([{
                     isrc: 100,
@@ -52,6 +53,6 @@ let api = {
             }
         });
     }
-}
+};
 
 export default api;

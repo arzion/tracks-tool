@@ -1,6 +1,6 @@
 'use strict';
 
-import './style/app.less';
+import './app.less';
 
 import settings from './app.settings';
 import bmatApi from './api/bmatApi';

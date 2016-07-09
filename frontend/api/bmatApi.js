@@ -4,7 +4,7 @@ import ajax from '../utils/ajax';
 
 let actions = {
     getSimilar: null
-}
+};
 
 let api = {
     init: (rootUrl) => {

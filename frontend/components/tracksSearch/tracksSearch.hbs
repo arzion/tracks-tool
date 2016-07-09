@@ -1,11 +1,25 @@
-<p>Search for track and see the BMAT reccomendations</p>
-<div class="form-group">
-    <div class="form-group">
-        <div class="col-md-11">
-            <input type="text" class="form-control" id="search-track-input" placeholder="Search">
-        </div>
-        <div class="col-md-1">
-            <button type="submit" class="btn btn-default" id="search-track-button">Search</button>
-        </div>
+<p>Search for seeds</p>
+<div class="form-group search-container">
+    <div class="col-md-7">
+        <input type="text" class="form-control" id="search-track-input" placeholder="Search for...">
+    </div>
+    <div class="col-md-2">
+        <select class="form-control" id="search-type-select" >
+            <option selected="selected" value="track">Track</option>
+            <option value="artist">Artist</option>
+            <option value="album">Album</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <select class="form-control" id="search-portal-select" >
+            <option selected="selected" value="1660">MSH-360</option>
+            <option value="1087">TDC</option>
+            <option value="1387">Telmore</option>
+            <option value="1458">Yousee</option>
+            <option value="1650">Juke-de</option>
+        </select>
+    </div>
+    <div class="col-md-1">
+        <button type="submit" class="btn btn-default" id="search-track-button">Search</button>
     </div>
 </div>

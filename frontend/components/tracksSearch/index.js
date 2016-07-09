@@ -1,5 +1,7 @@
 'use strict';
 
+import './tracksSearch.less';
+
 import helpers from 'utils/helpers';
 import api from 'api/catalogApi';
 import searchTemplate from './tracksSearch.hbs';
@@ -14,12 +16,18 @@ function TracksSearch(container) {
         _this.container.innerHTML = searchTemplate();
 
         let searchInput = _this.container.querySelector('#search-track-input');
+        let searchTypeSelect = _this.container.querySelector('#search-type-select');
+        let searchPortalSelect = _this.container.querySelector('#search-portal-select');
         let searchButton = _this.container.querySelector('#search-track-button');
 
-        let searchTracksThrottle = helpers.throttleCall(api.searchTracks, 2000, false);
+        let searchTracksThrottle = helpers.throttleCall(api.search, 2000, false);
         let doSearch = function () {
-
-            searchTracksThrottle(searchInput.value, (result) => {
+            var data = {
+                query: searchInput.value,
+                type: searchTypeSelect.value,
+                portal: searchPortalSelect.value
+            };
+            searchTracksThrottle(data, (result) => {
                 require.ensure(['tracksTable'], function () {
                     let TracksTable = require('tracksTable');
                     new TracksTable(document.getElementById('search-result-container')).render({
