@@ -3,7 +3,7 @@
 import './tracksSearch.less';
 
 import helpers from 'utils/helpers';
-import api from 'api/catalogApi';
+import api from 'bmatTestToolApi';
 import searchTemplate from './tracksSearch.hbs';
 
 let TracksTable = require('tracksTable');

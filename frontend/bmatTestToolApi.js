@@ -1,6 +1,6 @@
 'use strict';
 
-import ajax from '../utils/ajax';
+import ajax from './utils/ajax';
 
 let actions = {
     search: null
