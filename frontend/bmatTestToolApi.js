@@ -3,7 +3,9 @@
 import ajax from './utils/ajax';
 
 let actions = {
-    trackSearchTemplate: null
+    trackSearchTemplate: null,
+    getTrackTemplate: null,
+    getTracksToTrackRecommendations: null
 };
 
 let api = {
@@ -14,9 +16,14 @@ let api = {
                 if(link.rel === 'catalog-track-search') {
                     actions.trackSearchTemplate = link.href;
                 }
+                if(link.rel === 'catalog-track') {
+                    actions.getTrackTemplate = link.href;
+                }
+                if(link.rel === 'recommendations-tracks-to-track') {
+                    actions.getTracksToTrackRecommendations = link.href;
+                }
             });
-            console.log(`API: Initialised.
-             trackSearchTemplate: ${actions.trackSearchTemplate}`);
+            console.log(`API: Initialised.`);
         });
     },
 
@@ -37,7 +44,36 @@ let api = {
         } else {
             throw new Error(`Type is not supported: ${data.type}`);
         }
+    },
 
+    getTrack: (trackId, portalId, callback) => {
+        var url = actions.getTrackTemplate
+            .replace('{portal}', portalId)
+            .replace('{trackId}', trackId);
+        ajax.get(url, (result) => {
+            console.log(`API: Get track initiated by ${url}.
+                    TrackId: ${trackId}. Portal: ${portalId}`);
+            if (typeof callback == 'function') {
+                callback(result);
+            } else {
+                throw new Error('Callback is not a function.');
+            }
+        });
+    },
+
+    getTracksToTrackRecommendations: (trackId, portalId, callback) => {
+        var url = actions.getTracksToTrackRecommendations
+            .replace('{portal}', portalId)
+            .replace('{trackId}', trackId);
+        ajax.get(url, (result) => {
+            console.log(`API: Get tracks recommendation by track initiated by ${url}.
+                    TrackId: ${trackId}. Portal: ${portalId}`);
+            if (typeof callback == 'function') {
+                callback(result);
+            } else {
+                throw new Error('Callback is not a function.');
+            }
+        });
     }
 };
 

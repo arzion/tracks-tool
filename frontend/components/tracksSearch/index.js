@@ -32,7 +32,8 @@ function TracksSearch(container) {
                     let TracksTable = require('tracksTable');
                     new TracksTable(document.getElementById('search-result-container')).render({
                         query: searchInput.value,
-                        rows: result
+                        rows: result,
+                        portalId: data.portal
                     });
                 });
             });
