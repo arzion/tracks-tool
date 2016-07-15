@@ -3,7 +3,7 @@
     <table id="recommendations-table" class="table table-striped table-condensed table-hover" >
         <tr>
             <th>Isrc</th>
-            <th>Artist</th>
+            <th>Artist / Album</th>
             <th>Track</th>
         </tr>
         {{#recommendations}}
@@ -13,7 +13,7 @@
                         <span class="value">{{isrc}}</span>
                     </div>
                 </td>
-                <td class="track-info">{{artist}}</td>
+                <td class="track-info">{{artist}} / {{album}}</td>
                 <td class="track-name">{{name}}</td>
             </tr>
         {{/recommendations}}
