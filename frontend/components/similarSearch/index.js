@@ -4,25 +4,24 @@ import api from 'bmatTestToolApi';
 import seedTemplate from './seed.hbs';
 import recommendationsTemplate from './recommendations.hbs';
 
-function SimilarSearch(container, trackId, portalId) {
+function SimilarSearch(container, trackData) {
     let _this = this;
     _this.container = container;
-    _this.trackId = trackId;
-    _this.portalId = portalId;
+    _this.data = trackData;
 
     init();
 
     function init() {
-        api.getTrack(_this.trackId, _this.portalId, result => {
+        api.getTrack(_this.data.trackId, _this.data.portalId, result => {
             var html = seedTemplate(result);
             _this.container.innerHTML = html;
 
-            _this.find(_this.trackId, _this.portalId);
+            _this.findSimilar(_this.data.isrc, _this.data.portalId);
         });
     }
 
-    _this.find = function(trackId, portalId) {
-        api.getTracksToTrackRecommendations(trackId, portalId, function(result) {
+    _this.findSimilar = function(isrc, portalId) {
+        api.getTracksToTrackRecommendations(isrc, portalId, function(result) {
             var recommendationsHtml = recommendationsTemplate({
                 recommendations: result
             });

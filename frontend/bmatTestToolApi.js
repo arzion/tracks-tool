@@ -61,13 +61,13 @@ let api = {
         });
     },
 
-    getTracksToTrackRecommendations: (trackId, portalId, callback) => {
+    getTracksToTrackRecommendations: (isrc, portalId, callback) => {
         var url = actions.getTracksToTrackRecommendations
             .replace('{portal}', portalId)
-            .replace('{trackId}', trackId);
+            .replace('{isrc}', isrc);
         ajax.get(url, (result) => {
             console.log(`API: Get tracks recommendation by track initiated by ${url}.
-                    TrackId: ${trackId}. Portal: ${portalId}`);
+                    TrackId: ${isrc}. Portal: ${portalId}`);
             if (typeof callback == 'function') {
                 callback(result);
             } else {

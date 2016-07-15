@@ -20,16 +20,20 @@ function TracksTable(container) {
             _this.container.innerHTML = html;
             _this.container.querySelectorAll('.similar-button').forEach(el => {
                 el.addEventListener('click', () => {
-                    _this.findSimilar(el.dataset.id, _this.portalId);
+                    _this.findSimilar(el.dataset.isrc, el.dataset.id, _this.portalId);
                 });
             });
         });
     };
 
-    _this.findSimilar = function(trackId, portalId) {
+    _this.findSimilar = function(isrc, trackId, portalId) {
         require.ensure(['similarSearch'], function () {
             let SimilarSearch = require('similarSearch');
-            new SimilarSearch(_this.container, trackId, portalId);
+            new SimilarSearch(_this.container, {
+                trackId: trackId,
+                isrc: isrc,
+                portalId: portalId
+            });
         });
     }
 }
